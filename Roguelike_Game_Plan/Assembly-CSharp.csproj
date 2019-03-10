@@ -66,16 +66,16 @@
     <Compile Include="Assets\Script\Spawn_Object.cs" />
     <Compile Include="Assets\Script\SpwanRooms.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/1820109/Desktop/Roguelike_Game_Plan/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/1820109/Desktop/Project_game1/Roguelike_Game_Plan/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/1820109/Desktop/Roguelike_Game_Plan/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/1820109/Desktop/Project_game1/Roguelike_Game_Plan/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/1820109/Desktop/Roguelike_Game_Plan/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/1820109/Desktop/Project_game1/Roguelike_Game_Plan/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/1820109/Desktop/Roguelike_Game_Plan/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/1820109/Desktop/Project_game1/Roguelike_Game_Plan/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
