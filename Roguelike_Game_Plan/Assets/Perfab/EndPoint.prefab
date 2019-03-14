@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 114848113906367456}
   - component: {fileID: 61909053542492510}
   m_Layer: 8
-  m_Name: Room_Layer10
+  m_Name: EndPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1775,7 +1775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efca468461e63e448689001b5bd8773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 10
+  type: 2
 --- !u!114 &114849578739628774
 MonoBehaviour:
   m_ObjectHideFlags: 1

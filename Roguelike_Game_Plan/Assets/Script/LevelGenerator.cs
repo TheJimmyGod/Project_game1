@@ -9,7 +9,7 @@ public class LevelGenerator : MonoBehaviour {
     private int direction;
     public float MoveAmount;
     private float AutoSpawnRoom;
-    public float StartAutoSpawnRoom = 0.25f;
+    public float StartAutoSpawnRoom = 0.05f;
 
     public float minimumX;
     public float maximumX;
