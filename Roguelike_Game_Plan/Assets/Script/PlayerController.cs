@@ -15,10 +15,12 @@ public class PlayerController : MonoBehaviour {
     public LayerMask FigureGroundOut;
     private int JumpRange;
     public int JumpRangeValue;
+    private Animator animator;
     void Start()
     {
         JumpRange = JumpRangeValue;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     void Update()
     {
@@ -42,6 +44,11 @@ public class PlayerController : MonoBehaviour {
 
         MoveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(MoveInput * speed, rb.velocity.y);
+        
+        if(MoveInput == 0)
+        {
+            animator.SetBool("IsRunning", false);
+        }
         if(facingRight == false && MoveInput > 0)
         {
             Flip();
@@ -50,6 +57,7 @@ public class PlayerController : MonoBehaviour {
         {
             Flip();
         }
+        animator.SetBool("IsRunning", true);
     }
     void Flip()
     {
