@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    [SerializeField]
-    private float xMax;
-    [SerializeField]
-    private float yMax;
-    [SerializeField]
-    private float xMin;
-    [SerializeField]
-    private float yMin;
-
-    private Transform Target;
-
-    private void Start()
+    public Transform target;
+    public float moveSpeed;
+    private Vector3 targetPos;
+    public PlayerController Player;
+    void Start()
     {
-        Target = GameObject.Find("Player").transform;
+        if(!target)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
-    private void LateUpdate()
+    void Update()
     {
-        transform.position = new Vector3(Mathf.Clamp(Target.position.x, xMin, xMax), Mathf.Clamp(Target.position.y, yMin, yMax), transform.position.z);
+        if(Player.health == 0)
+        {
+            return;
+        }
+        if(target.gameObject != null)
+        {
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+            targetPos.Set(target.transform.position.x, target.transform.position.y, this.transform.position.z);
+            this.transform.position = Vector3.Lerp(this.transform.position, targetPos, moveSpeed * Time.deltaTime);
+        }
     }
 
 }

@@ -5,17 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public float speed = 10.0f;
+    public int health = 6;
+    public float JumpForce;
+    public Transform GroundPosition;
+    public LayerMask FigureGroundOut;
+    public float CheckRadius;
+    public int JumpRangeValue;
+
     private Rigidbody2D rb;
     private bool facingRight = true;
     private float MoveInput;
-    public float JumpForce;
-    private bool IsGrounded;
-    public Transform GroundPosition;
-    public float CheckRadius;
-    public LayerMask FigureGroundOut;
+    public bool IsGrounded;
     private int JumpRange;
-    public int JumpRangeValue;
     private Animator animator;
+    
     void Start()
     {
         JumpRange = JumpRangeValue;
@@ -24,6 +27,10 @@ public class PlayerController : MonoBehaviour {
     }
     void Update()
     {
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
         if(IsGrounded==true)
         {
             JumpRange = 2;
@@ -44,10 +51,17 @@ public class PlayerController : MonoBehaviour {
 
         MoveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(MoveInput * speed, rb.velocity.y);
-        
-        if(MoveInput == 0)
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
-            animator.SetBool("IsRunning", false);
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+        if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            animator.SetTrigger("jump");
         }
         if(facingRight == false && MoveInput > 0)
         {
@@ -57,7 +71,6 @@ public class PlayerController : MonoBehaviour {
         {
             Flip();
         }
-        animator.SetBool("IsRunning", true);
     }
     void Flip()
     {
@@ -65,5 +78,11 @@ public class PlayerController : MonoBehaviour {
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+    }
+
+    public void GetDamage(int Damage)
+    {
+        transform.Translate(Vector2.up * 2f);
+        health -= Damage;
     }
 }
