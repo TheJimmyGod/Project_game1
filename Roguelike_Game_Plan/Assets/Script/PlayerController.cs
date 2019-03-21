@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
@@ -18,18 +19,31 @@ public class PlayerController : MonoBehaviour {
     public bool IsGrounded;
     private int JumpRange;
     private Animator animator;
+    private GameMaster gm;
     
+    public int GetPower
+    {
+        get; set;
+    }
+    public int GetScore
+    {
+        get; set;
+    }
     void Start()
     {
         JumpRange = JumpRangeValue;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+        transform.position = gm.Checkpoints;
     }
+
     void Update()
     {
         if(health <= 0)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if(IsGrounded==true)
         {
@@ -44,6 +58,7 @@ public class PlayerController : MonoBehaviour {
         {
             rb.velocity = Vector2.up * JumpForce;
         }
+        
     }
     void FixedUpdate()
     {
@@ -82,7 +97,11 @@ public class PlayerController : MonoBehaviour {
 
     public void GetDamage(int Damage)
     {
-        transform.Translate(Vector2.up * 2f);
+        for (int i = 0; i < 30; i++)
+        {
+            transform.Translate(Vector2.up * 0.01f);
+        }
+        GetPower += 2;
         health -= Damage;
     }
 }

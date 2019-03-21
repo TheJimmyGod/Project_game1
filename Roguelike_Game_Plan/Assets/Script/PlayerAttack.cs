@@ -30,10 +30,26 @@ public class PlayerAttack : MonoBehaviour {
                 }
 
                 Collider2D[] EnemiesToDamage = Physics2D.OverlapBoxAll(AttackPosition.position, new Vector2(AttackRangeX, AttackRangeY), 0, Layer_Enemy);
-                for (int i = 0; i < EnemiesToDamage.Length; i++)
+                if(player.GetPower >= 6)
                 {
-                    EnemiesToDamage[i].GetComponent<Enemy>().TakeDamage(Damage);
-                    Debug.Log("Hit!");
+                    for (int i = 0; i < EnemiesToDamage.Length; i++)
+                    {
+                        EnemiesToDamage[i].GetComponent<Enemy>().TakeDamage(Damage*3);
+                        Debug.Log("Strong Hit!");
+                    }
+                    if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().health <= 5)
+                    {
+                        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().health++;
+                    }
+                    player.GetPower = 0;
+                }
+                else
+                {
+                    for (int i = 0; i < EnemiesToDamage.Length; i++)
+                    {
+                        EnemiesToDamage[i].GetComponent<Enemy>().TakeDamage(Damage);
+                        Debug.Log("Hit!");
+                    }
                 }
             }
             TimeAttack = StartTimeAttack;

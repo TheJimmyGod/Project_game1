@@ -139,7 +139,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   RangeX: 2
-  RangeY: 2
+  RangeY: 1.1
   Damage: 1
   velocity: {x: 2, y: 0}
   StartDazedTime: 0.6

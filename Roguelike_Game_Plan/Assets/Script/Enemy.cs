@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour {
         if (Health <= 0)
         {
             Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().GetScore += 100;
         }
         else
         {
@@ -99,6 +100,7 @@ public class Enemy : MonoBehaviour {
         {
             transform.Translate(Vector2.right * 0.4f);
         }
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().GetPower++;
         Health -= damage;
     }
 }
