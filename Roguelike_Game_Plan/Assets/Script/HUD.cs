@@ -22,9 +22,10 @@ public class HUD : MonoBehaviour {
     public void Update () {
         try
         {
-            m_Healthbar.value = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().health;
-            m_PowerBar.value = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().GetPower;
-            m_Score.text = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().GetScore.ToString();
+            var player = GameObject.FindGameObjectWithTag("Player");
+            m_Healthbar.value = player.GetComponent<PlayerController>().health;
+            m_PowerBar.value = player.GetComponent<PlayerController>().GetPower;
+            m_Score.text = player.GetComponent<PlayerController>().GetScore.ToString();
         }
         catch(Exception)
         {
